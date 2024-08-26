@@ -5,7 +5,7 @@ sap.ui.getCore().attachInit(function () {
 	"use strict";
 
 	sap.ui.require([
-		"dashboard1/test/unit/AllTests"
+		"ztpr/zticket_processing/test/unit/AllTests"
 	], function () {
 		QUnit.start();
 	});

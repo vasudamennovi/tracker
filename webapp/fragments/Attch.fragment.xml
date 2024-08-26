@@ -1,0 +1,47 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:l="sap.ui.layout"
+    xmlns:f="sap.ui.layout.form"
+    	xmlns:u="sap.ui.unified">
+	 <Dialog
+		title="File Attachments"
+		contentWidth="50%">
+		
+    <buttons>
+      <!--   <Button text = "Create" press = "create" type="Success"/> -->
+      <Button
+			text="Upload File"
+			press="handleUploadPress" type="Emphasized"/>
+		<Button text = "Close" press = "dclose" type="Emphasized"/>
+	</buttons> 
+		<f:SimpleForm id="SimpleFormDisplay354"
+			editable="false"
+			layout="ResponsiveGridLayout"
+			title="File Attachments"
+			 >
+			<f:content>
+				<Label text="File Type" required="true"/>
+				<Select
+					forceSelection="false"
+					id="Sel"
+					items="{
+						 path:'FTmodel>/',
+						 templateShareable:false
+						 }">
+					<core:Item  text="{FTmodel>InputTc}" />
+                    
+				</Select>
+                <l:VerticalLayout>
+				<u:FileUploader
+			id="fileUploader"
+			name="myFileUpload"
+			uploadUrl="upload/"
+			tooltip="Upload your file to the local server"
+			change="handleUploadComplete"/>
+		
+            </l:VerticalLayout>
+			</f:content>
+		</f:SimpleForm>
+		</Dialog> 
+		</core:FragmentDefinition>

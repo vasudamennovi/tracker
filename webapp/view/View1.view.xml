@@ -1,195 +1,279 @@
-<mvc:View xmlns:mvc="sap.ui.core.mvc"
-    xmlns:tnt="sap.tnt"
+<mvc:View controllerName="ztpr.zticketprocessing.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
     xmlns:core="sap.ui.core"
+    xmlns:tnt="sap.tnt"
     xmlns:f="sap.f"
     xmlns:fb="sap.ui.comp.filterbar"
-    xmlns="sap.ui.table"
-    xmlns:m="sap.m"
-    xmlns:u="sap.ui.unified"
-    xmlns:c="sap.ui.core" controllerName="dashboard1.controller.View1" height="100%" displayBlock="true">
+    xmlns:u="sap.ui.unified">
+
     <f:DynamicPage id="dynamicPageId" headerExpanded="true">
         <f:title>
             <f:DynamicPageTitle>
                 <f:heading>
-                    <m:Title text="Development Tracker - Dashboard"/>
+                    <Title text="Development Tracker - Manage"/>
                 </f:heading>
             </f:DynamicPageTitle>
         </f:title>
         <f:header>
-            <f:DynamicPageHeader>
+            <f:DynamicPageHeader >
                 <f:content>
                     <fb:FilterBar id="filterBar" useToolbar="false" search="onPressGo" showClearOnFB="true" clear="onPressClear">
                         <fb:filterGroupItems>
                             <fb:FilterGroupItem visibleInFilterBar="true" groupName="G1" groupTitle="Group1" name="A1" label="RICEF ID">
                                 <fb:control>
-                                    <m:MultiComboBox id="TickNum" selectionFinish="onSelectTicNum" width="260px" items="{ path: 'ticketNumModel>/' }">
-                                        <core:Item key="{ticketNumModel>}" text="{ticketNumModel>}"/>
-                                    </m:MultiComboBox>
+                                    <MultiComboBox
+                        id = "TickNum" selectionFinish="onSelectTicNum"
+                        width = "260px" items="{
+                            path: 'datamodel1>/'
+                            }">
+                                        <core:Item key="{datamodel1>RICEF_ID}" text="{datamodel1>RICEF_ID}" />
+                                    </MultiComboBox>
                                 </fb:control>
                             </fb:FilterGroupItem>
                             <fb:FilterGroupItem visibleInFilterBar="true" groupName="G1" groupTitle="Group1" name="A2" label="Description">
                                 <fb:control>
-                                    <m:MultiComboBox id="Descrip" selectionFinish="onSelectDescrip" width="260px" items="{ path: 'desModel>/' }">
-                                        <core:Item key="{desModel>}" text="{desModel>}"/>
-                                    </m:MultiComboBox>
+                                    <MultiComboBox
+                        id = "Descrip" selectionFinish="onSelectDescrip"
+                        width = "260px" items="{
+                            path: 'desModel>/'
+                            }">
+                                        <core:Item key="{desModel>}" text="{desModel>}" />
+                                    </MultiComboBox>
+                                </fb:control>
+                            </fb:FilterGroupItem>
+                            <fb:FilterGroupItem visibleInFilterBar="true" groupName="G1" groupTitle="Group1" name="A9" label="Region">
+                                <fb:control>
+                                    <MultiComboBox
+                        id = "regionId" selectionFinish="onSelectBU"
+                        width = "260px" items="{
+                            path: 'regionModel>/'
+                            }">
+                                        <core:Item key="{regionModel>InputTc}" text="{regionModel>InputTc}" />
+                                    </MultiComboBox>
                                 </fb:control>
                             </fb:FilterGroupItem>
 
                             <fb:FilterGroupItem visibleInFilterBar="true" groupName="G1" groupTitle="Group1" name="A3" label="Functional Consultant">
                                 <fb:control>
-                                    <m:MultiComboBox id="FuncCons" selectionFinish="onSelectFuncCons" width="260px" items="{ path: 'funcConstModel>/' }">
-                                        <core:Item key="{funcConstModel>Name}" text="{funcConstModel>Name}"/>
-                                    </m:MultiComboBox>
+                                    <MultiComboBox
+                        id = "FuncCons" selectionFinish="onSelectFuncCons"
+                        width = "260px" items="{
+                            path: 'funcConstModel>/'
+                            }">
+                                        <core:Item key="{funcConstModel>Name}" text="{funcConstModel>Name}" />
+                                    </MultiComboBox>
                                 </fb:control>
                             </fb:FilterGroupItem>
                             <fb:FilterGroupItem visibleInFilterBar="true" groupName="G1" groupTitle="Group1" name="A4" label="Technical Consultant">
                                 <fb:control>
-                                    <m:MultiComboBox id="TechCons" selectionFinish="onSelecttechCons" width="260px" items="{ path: 'techConstModel>/' }">
-                                        <core:Item key="{techConstModel>Name}" text="{techConstModel>Name}"/>
-                                    </m:MultiComboBox>
+                                    <MultiComboBox
+                        id = "TechCons" selectionFinish="onSelecttechCons"
+                        width = "260px" items="{
+                            path: 'techConstModel>/'
+                            }">
+                                        <core:Item key="{techConstModel>Name}" text="{techConstModel>Name}" />
+                                    </MultiComboBox>
                                 </fb:control>
                             </fb:FilterGroupItem>
                             <fb:FilterGroupItem visibleInFilterBar="true" groupName="G1" groupTitle="Group1" name="A5" label="Priority">
                                 <fb:control>
-                                    <m:MultiComboBox id="Prio" selectionFinish="onSelectPrio" width="260px" items="{ path: 'prioModel>/' }">
-                                        <core:Item key="{prioModel>InputTc}" text="{prioModel>InputTc}"/>
-                                    </m:MultiComboBox>
+                                    <MultiComboBox
+                        id = "Prio" selectionFinish="onSelectPrio"
+                        width = "260px" items="{
+                            path: 'prioModel>/'
+                            }">
+                                        <core:Item key="{prioModel>InputTc}" text="{prioModel>InputTc}" />
+                                    </MultiComboBox>
                                 </fb:control>
                             </fb:FilterGroupItem>
                             <fb:FilterGroupItem visibleInFilterBar="true" groupName="G1" groupTitle="Group1" name="A6" label="Complexity">
                                 <fb:control>
-                                    <m:MultiComboBox id="Complex" selectionFinish="onSelectComplex" width="260px" items="{ path: 'compModel>/' }">
-                                        <core:Item key="{compModel>InputTc}" text="{compModel>InputTc}"/>
-                                    </m:MultiComboBox>
+                                    <MultiComboBox
+                        id = "Complex" selectionFinish="onSelectComplex"
+                        width = "260px" items="{
+                            path: 'compModel>/'
+                            }">
+                                        <core:Item key="{compModel>InputTc}" text="{compModel>InputTc}" />
+                                    </MultiComboBox>
                                 </fb:control>
                             </fb:FilterGroupItem>
                             <fb:FilterGroupItem visibleInFilterBar="true" groupName="G1" groupTitle="Group1" name="A8" label="Ticket Status" visible="false">
                                 <fb:control>
-                                    <m:MultiComboBox id="TicSts" selectionFinish="onSelectTicSts" width="260px" items="{ path: 'tickStsModel>/' }">
-                                        <core:Item key="{tickStsModel>}" text="{tickStsModel>}"/>
-                                    </m:MultiComboBox>
+                                    <MultiComboBox
+                        id = "TicSts" selectionFinish="onSelectTicSts"
+                        width = "260px" items="{
+                            path: 'tickStsModel>/'
+                            }">
+                                        <core:Item key="{tickStsModel>}" text="{tickStsModel>}" />
+                                    </MultiComboBox>
                                 </fb:control>
                             </fb:FilterGroupItem>
                             <fb:FilterGroupItem visibleInFilterBar="true" groupName="G1" groupTitle="Group1" name="A7" label="Development Status">
                                 <fb:control>
-                                    <m:MultiComboBox id="DevSts" selectionFinish="onSelectDevSts" width="260px" items="{ path: 'devStsModel>/' }">
-                                        <core:Item key="{devStsModel>InputTc}" text="{devStsModel>InputTc}"/>
-                                    </m:MultiComboBox>
+                                    <MultiComboBox
+                        id = "DevSts" selectionFinish="onSelectDevSts"
+                        width = "260px" items="{
+                            path: 'devStsModel>/'
+                            }">
+                                        <core:Item key="{devStsModel>InputTc}" text="{devStsModel>InputTc}" />
+                                    </MultiComboBox>
                                 </fb:control>
                             </fb:FilterGroupItem>
+
                         </fb:filterGroupItems>
                     </fb:FilterBar>
                 </f:content>
             </f:DynamicPageHeader>
         </f:header>
-        <f:content>
-            <m:Panel height="100%" width="100%">
-                <Table id="idtable" selectionMode="Single" rows="{dashBoardModel>/}" enableCellFilter="true" rowActionCount="1" filter="filterTable" ariaLabelledBy="title" alternateRowColors="true" sort="true" visibleRowCountMode="Auto" threshold="100">
-                    <extension>
-                        <m:OverflowToolbar style="Clear">
-                            <m:Title id="title" text="Tickets({=${dashBoardModel>/}.length})"/>
-                            <m:ToolbarSpacer/>
-                            <m:SearchField placeholder="Filter" liveChange="onSearch" width="15rem"/>
-                            <m:Button press="onExcelExport" icon="sap-icon://excel-attachment"/>
-                        </m:OverflowToolbar>
-                    </extension>
-                    <columns>
-                        <Column width="auto" filterProperty="TicketNo" sortProperty="TicketNo">
-                            <m:Label text="RICEF ID"/>
-                            <template>
-                                <m:Link id="idTicketNum" text="{dashBoardModel>RICEF_ID}" press="onRowSelect" ariaHasPopup="Dialog"/>
-                            </template>
-                        </Column>
-                        <Column width="auto" filterProperty="Description">
-                            <m:Label text="Description"/>
-                            <template>
-                                <m:Text text="{dashBoardModel>Description}" wrapping="false"/>
-                            </template>
-                        </Column>
-                        <!--    -->
-                        <Column width="auto" filterProperty="BusnUnit" sortProperty="BusnUnit">
-                            <m:Label text="Region"/>
-                            <template>
-                                <m:Text text="{dashBoardModel>BusnUnit}" wrapping="false"/>
-                            </template>
-                        </Column>
-                        <!--    -->
-                        <Column width="auto" filterProperty="FuncConst" sortProperty="FuncConst">
-                            <m:Label text="Functional Consultant"/>
-                            <template>
-                                <m:ObjectStatus icon="sap-icon://employee" text="{dashBoardModel>FuncConst}"/>
-                            </template>
-                        </Column>
-                        <Column width="auto" filterProperty="TechPs" sortProperty="TechPs">
-                            <m:Label text="Technical Consultant"/>
-                            <template>
-                                <m:ObjectStatus icon="sap-icon://supplier" text="{dashBoardModel>TechPs}"/>
-                            </template>
-                        </Column>
-                        <Column width="auto" filterProperty="TechPs" sortProperty="FsTargetCom">
-                            <m:Label text="FS Target Com.Date"/>
-                            <template>
-                                <m:ObjectStatus icon="sap-icon://appointment-2" text="{dashBoardModel>FsTargetCom}" />
-                                <!-- <m:Text text="{dashBoardModel>FsTargetCom'}"/> -->
 
-                                <m:Text text="{path:'dashBoardModel>FsTargetCom', formatOptions:{ pattern:'dd/MM/yyyy' } }"/>
-                            </template>
-                        </Column>
-                        <Column width="auto" filterProperty="DefectCount" sortProperty="DefectCount">
-                            <m:Label text="Defects"/>
-                            <template>
-                                <m:Text text="{dashBoardModel>DefectCount}" wrapping="false"/>
-                            </template>
-                        </Column>
-                        <Column width="auto" filterProperty="TechPs" sortProperty="DevTargetDate" visible="false">
-                            <m:Label text="Dev Target Com.Date" visible="false"/>
-                            <template>
-                                <!-- <m:Text text="{dashBoardModel>DevTargetDate'}"/> -->
-                                <m:ObjectStatus icon="sap-icon://appointment-2" text="{dashBoardModel>DevTargetDate}" />
-                                <m:Text text="{path:'dashBoardModel>DevTargetDate',formatOptions:{ pattern:'dd/MM/yyyy' } }"/>
-                            </template>
-                        </Column>
-                        <Column width="auto" filterProperty="Priority">
-                            <m:Label text="Priority"/>
-                            <template>
-                                <tnt:InfoLabel text="{dashBoardModel>Priority}" displayOnly="false" colorScheme="{ parts: [ {path: 'dashBoardModel>Priority'} ], formatter: '.Priority' }"/>
-                            </template>
-                        </Column>
-                        <Column width="auto" filterProperty="Complexity">
-                            <m:Label text="Complexity"/>
-                            <template>
-                                <tnt:InfoLabel text="{dashBoardModel>Complexity}" displayOnly="false" colorScheme="{ parts: [ {path: 'dashBoardModel>Complexity'} ], formatter: '.Complexity' }"/>
-                            </template>
-                        </Column>
-                        <Column width="auto" filterProperty="Aging">
-                            <m:Label text="Aging"/>
-                            <template>
-                                <m:Link id="idage" text="{dashBoardModel>Aging}" press="onPressAge " ariaHasPopup="Dialog"/>
-                            </template>
-                        </Column>
-                        <Column width="auto" filterProperty="TicketStatus" visible="false">
-                            <m:Label text="Ticket Status"/>
-                            <template>
-                                <tnt:InfoLabel text="{dashBoardModel>TicketStatus}" displayOnly="false" colorScheme="{ parts: [ {path: 'dashBoardModel>TicketStatus'} ], formatter: '.statusColor' }" />
-                            </template>
-                        </Column>
-                        <Column width="auto" filterProperty="DevStatus">
-                            <m:Label text="Development Status"/>
-                            <template>
-                                <m:Text text="{dashBoardModel>DevStatus}" wrapping="false"/>
-                            </template>
-                        </Column>
-                    </columns>
-                    <rowActionTemplate>
-                        <RowAction>
-                            <items>
-                                <RowActionItem type="Navigation" press="onRowSelect"/>
-                            </items>
-                        </RowAction>
-                    </rowActionTemplate>
-                </Table>
-            </m:Panel>
+        <f:content>
+            <Table id="dashboard" items="{datamodel1>/}" growing="true" sticky="ColumnHeaders" alternateRowColors="true">
+                <headerToolbar>
+                    <OverflowToolbar >
+                        <Label design="Bold" text="Items ({oItemLenModel>/})"></Label>
+                        <ToolbarSpacer/>
+                        <SearchField id="search" liveChange="onSearch" width="30%" />
+                        <Button press="onExcelExport" icon="sap-icon://excel-attachment" />
+
+                    </OverflowToolbar>
+                </headerToolbar>
+                <columns>
+
+                    <Column width="10%">
+                        <Label text="RICEF ID" />
+                    </Column>
+                    <Column hAlign="Center">
+                        <Label text="Description" />
+                    </Column>
+                    <Column hAlign="Center">
+                        <Label text="Region" />
+                    </Column>
+                    <Column hAlign="Center">
+                        <Label text="Functional Consultant" />
+                    </Column>
+                    <Column hAlign="Center">
+                        <Label text="Technical Consultant"/>
+                    </Column>
+                    <Column hAlign="Center">
+                        <Label text="FS Target Com.Date"/>
+                    </Column>
+                    <Column hAlign="Center" visible="false">
+                        <Label text="Dev Target Com.Date"/>
+                    </Column>
+
+                    <Column hAlign="Center">
+                        <Label text="Priority"/>
+                    </Column>
+                    <Column hAlign="Center">
+                        <Label text="Complexity" />
+                    </Column>
+                    <Column hAlign="Center">
+                        <Label text="Aging"/>
+                    </Column>
+                    <Column hAlign="Center" visible="false">
+                        <Label text="Ticket Status" />
+                    </Column>
+                    <Column hAlign="Center">
+                        <Label text="Defects" />
+                    </Column>
+
+                    <Column hAlign="Center">
+                        <Label text="DevStatus"/>
+                    </Column>
+
+                    <Column hAlign="Center">
+                        <Label text="Ref.Copy" />
+                    </Column>
+
+
+                </columns>
+                <items>
+                    <ColumnListItem type="Navigation" press="onRowSelect">
+
+                        <Link text="{datamodel1>RICEF_ID}" press="NavtoView2"   />
+
+                        <Text text="{datamodel1>Description}"/>
+                        <Text text="{datamodel1>BusnUnit}"/>
+
+                        <HBox class="tableDate">
+                            <core:Icon src="sap-icon://employee" color="blue" class="funcSpace"/>
+                            <Text text="{datamodel1>FuncConst}"/>
+                        </HBox>
+
+                        <HBox class="tableDate">
+                            <core:Icon src="sap-icon://employee" color="blue" class="techSpace"/>
+                            <Text text="{datamodel1>TechPs}"/>
+                        </HBox>
+
+                        <!-- <Text text="{datamodel1>FuncConst}"/> -->
+                        <HBox class="tableDate">
+                            <core:Icon src="sap-icon://appointment-2" color="green" class="dateSpace" />
+                            <Text text="{datamodel1>FsReceDate}"/>
+                        </HBox>
+
+                        <!--  <Text text="{datamodel1>TechPs}"/> -->
+                        <!--  <Text text="{datamodel1>FsTargetCom}"/> -->
+
+
+                        <HBox class="tableDate">
+                            <core:Icon src="sap-icon://appointment-2" color="green"/>
+                            <Text text="{datamodel1>DevTargetDate}"/>
+                        </HBox>
+
+                        <tnt:InfoLabel text="{datamodel1>Priority}" displayOnly="false" colorScheme="{ parts: [ {path: 'datamodel1>Priority'} ], formatter: '.Priority' }" />
+
+                        <tnt:InfoLabel text="{datamodel1>Complexity}" displayOnly="false" colorScheme="{ parts: [ {path: 'datamodel1>Complexity'} ], formatter: '.Complexity' }"/>
+
+                        <!--  <Text text="{datamodel1>Aging}"/> -->
+                        <Link text="{datamodel1>Aging}" press="onQuikView" ariaHasPopup="Dialog"/>
+                        <!--  <tnt:InfoLabel text="{datamodel1>Aging}" displayOnly="false" colorScheme="{ parts: [ {path: 'datamodel1>Aging'} ], formatter: '.statusColor' }"/> -->
+
+                        <tnt:InfoLabel text="{datamodel1>TicketStatus}" displayOnly="false" colorScheme="{ parts: [ {path: 'datamodel1>TicketStatus'} ], formatter: '.statusColor' }"/>
+                        <Text text="{datamodel1>DefectCount}"></Text>
+
+                        <Text text="{datamodel1>DevStatus}"/>
+
+
+
+                        <Button icon="sap-icon://copy" type="Emphasized" press="Ref_Ok" />
+
+
+                    </ColumnListItem>
+                </items>
+
+            </Table>
+
+
         </f:content>
     </f:DynamicPage>
+
+
 </mvc:View>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

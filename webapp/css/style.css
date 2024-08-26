@@ -1,3 +1,16 @@
-.datestamp{
+.myCustomIconSpacing {
     margin-right: 10px; 
+}
+.dateSpace{
+    margin-right: 10px; 
+}
+.techSpace{
+    margin-right: 10px; 
+    
+}
+.funcSpace{
+    margin-right: 10px; 
+}
+.space{
+    margin-left: 20px; 
 }

@@ -1,0 +1,39 @@
+<core:FragmentDefinition xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:l="sap.ui.layout"
+    xmlns:f="sap.ui.layout.form" title="Defect Details" contentWidth="50%">
+    <Dialog id="myDialog" title="Defect Details">
+
+        <f:SimpleForm id="formID">
+            <f:content>
+                <Label text="RICEF ID" ></Label>
+                <Input value="{DefectLog>RICEF_ID}" id="defectID" ></Input>
+
+                <Label text="Defect"></Label>
+                <Input value="{DefectLog>DEFECT}" id="defect" ></Input>
+
+                <Label text="Description"></Label>
+                <Input value="{DefectLog>DESCRIPTION}" id="des" ></Input>
+
+                <Label text="Development Status"></Label>
+                <Select id="dev" forceSelection="false" items="{ path: 'defectStsModel>/', templateShareable: false }" change="onRicefStatusChange" selectedKey="{datamodel1>/STATUS}">
+                    <core:Item text="{defectStsModel>InputTc}" key="{defectStsModel>InputTc}" />
+                </Select>
+
+                <Label text="Development Start Date"></Label>
+                <DatePicker value="{DefectLog>START_DATE}" id="startDate"></DatePicker>
+
+                <Label text="Dev Expt. End Date"></Label>
+                <DatePicker value="{DefectLog>END_DATE}" id="endDate"></DatePicker>
+
+                <Label text="Remarks"></Label>
+                <Input value="{DefectLog>REMARKS}" id="remarks"></Input>
+            </f:content>
+            <HBox>
+                <Button text="Save" press="onSavePress" class=".space"></Button>
+                <Button text="Cancel" press="onCancel"></Button>
+            </HBox>
+        </f:SimpleForm>
+
+    </Dialog>
+</core:FragmentDefinition>

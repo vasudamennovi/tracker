@@ -7,7 +7,7 @@ sap.ui.define([
 
 	Opa5.extendConfig({
 		arrangements: new Startup(),
-		viewNamespace: "dashboard1.view.",
+		viewNamespace: "ztpr.zticketprocessing.view.",
 		autoWait: true
 	});
 });

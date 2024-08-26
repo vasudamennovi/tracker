@@ -1,7 +1,7 @@
 /*global QUnit*/
 
 sap.ui.define([
-	"dashboard1/controller/View1.controller"
+	"ztpr/zticket_processing/controller/View1.controller"
 ], function (Controller) {
 	"use strict";
 
