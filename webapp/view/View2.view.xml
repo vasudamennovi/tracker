@@ -1,0 +1,270 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:c="sap.ui.core"
+    xmlns:tnt="sap.tnt"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:layout="sap.ui.layout"
+    xmlns:core="sap.ui.core"
+    xmlns:m="sap.m"
+    xmlns:s="sap.suite.ui.commons"
+    xmlns:u="sap.uxap"
+    xmlns:t="sap.ui.table"
+    xmlns:html="http://www.w3.org/1999/xhtml" controllerName="dashboard1.controller.View2" displayBlock="true">
+    <App id="idAppdetailpage">
+        <pages>
+            <Page id="idPage2" title="{i18n>title}" showNavButton="true" navButtonPress="onNavBckPress">
+                <content>
+                    <ObjectHeader icon="sap-icon://employee" iconDensityAware="true" iconAlt="Denise Smith" imageShape="Square" responsive="true" title="Creator: {oModelDashDetail>/CreatedBy}" number="AGING: {ageModel>/ticketage}" intro="RICEF ID:{oModelDashDetail>/RICEF_ID}" backgroundDesign="Solid">
+                        <ObjectAttribute title="{path: 'oModelDashDetail>/TcType', formatter: '.formatTitle'}" text="{oModelDashDetail>/TicketStatus}"/>
+                    </ObjectHeader>
+                    <IconTabBar id="idIconTabBar" select="onFilterSelect" class="sapUiResponsivePadding--header sapUiResponsivePadding--content">
+                        <items>
+                            <IconTabFilter icon="sap-icon://form" iconColor="Positive" text="Details" key="Details">
+                                <VBox class="sapUiSmallMargin">
+                                    <f:SimpleForm id="SimpleFormChange480_Trial" editable="true" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="4" labelSpanM="4" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="3" columnsL="2" columnsM="2" singleContainerFullSize="false">
+                                        <f:content>
+                                            <core:Title text="Ticket Reference"/>
+                                            <Label text="RICEF ID/Task ID"></Label>
+                                            <Input value="{oModelDashDetail>/RICEF_ID}" editable="false"></Input>
+                                            <Label text="Charm ID"></Label>
+                                            <Input value="{oModelDashDetail>/CHARM_ID}"></Input>
+                                            <Label text="Description"/>
+                                            <Input id="desc" width="100%" value="{oModelDashDetail>/Description}" editable="false"/>
+                                            <Label text="Dependent CR"></Label>
+                                            <Input value="{oModelDashDetail>/DefectCount}"></Input>
+                                            <Label text="Ticket Type"/>
+                                            <Input id="idTicketType" width="100%" value="{oModelDashDetail>/TcType}" editable="false"/>
+                                            <Label text="Project Name"></Label>
+                                            <Input value="{oModelDashDetail>/ProjectName}"></Input>
+                                            <Label text="Module"/>
+                                            <Input id="idTicketModule" width="100%" value="{oModelDashDetail>/ModuleTc}" editable="false"/>
+                                            <Label text="Business Unit"/>
+                                            <Input id="idBU" width="100%" value="{oModelDashDetail>/BusnUnit}" editable="false"/>
+                                            <Label text="FS Ticket Reference"/>
+                                            <Input value="{oModelDashDetail>/FsTcRef}" editable="false"/>
+                                            <Label text="FS Description"/>
+                                            <Input value="{oModelDashDetail>/FsDes}" editable="false"/>
+                                            <Label text="FS Ticket Creation Date"/>
+                                            <DatePicker id="fsticcredate" value="{path:'oModelDashDetail>/FsTcCre' }" editable="false"/>
+                                            <Label text="FS Ticket Target Completion Date"/>
+                                            <DatePicker value="{path:'oModelDashDetail>/FsTargetCom'}" editable="false"/>
+                                            <core:Title text="Development Details"/>
+                                            <Label text="System Details"/>
+                                            <Input id="idSysDetail" width="100%" value="{oModelDashDetail>/SysDetails}" editable="false" />
+                                            <Label text="Development Type"/>
+                                            <Input width="100%" value="{oModelDashDetail>/DevType}" editable="false"/>
+                                            <Label text="Development Status"/>
+                                            <Input width="100%" editable="false" value="{oModelDashDetail>/DevStatus}"/>
+                                            <!-- <Label text="Development Target Completion Date"/>
+                                            <DatePicker value="{path:'oModelDashDetail>/DevTargetDate' }" editable="false"/> -->
+                                            <Label text="Planned Starting Date"></Label>
+                                            <DatePicker id="planstartdate" value="{path:'oModelDashDetail>/PlannedStartingDate'}" editable="false"></DatePicker>
+                                            <Label text="Planned Ending Date"></Label>
+                                            <DatePicker id="planenddate" value="{path:'oModelDashDetail>/PlannedEndingDate'}" editable="false"></DatePicker>
+                                            <Label text="Actual Starting Date"></Label>
+                                            <DatePicker id="actualstartdate" value="{path:'oModelDashDetail>/ActualStartingDate'}" editable="false"></DatePicker>
+                                            <Label text="Actual Ending Date"></Label>
+                                            <DatePicker id="actualenddate" value="{path:'oModelDashDetail>/ActualEndingDate'}" editable="false"></DatePicker>
+                                            <Label text="MD Efforts"></Label>
+                                            <Input value="{oModelDashDetail>/MDEfforts}" editable="false"></Input>
+                                            <Label text="Fn.Spec.Recvd.Date"/>
+                                            <DatePicker id="fsdate" value="{path:'oModelDashDetail>/FsReceDate'}" change="dateflagF" editable="false"/>
+                                            <Label text="Priority"/>
+                                            <Input width="100%" value="{oModelDashDetail>/Priority}" editable="false"/>
+                                            <Label text="Complexity"/>
+                                            <Input width="100%" value="{oModelDashDetail>/Priority}" editable="false"/>
+                                            <Label text="Code Review Date" visible="{=${oModelDashDetail>/CrHide} !== 'X'}" />
+                                            <DatePicker id="fswdate" value="{oModelDashDetail>/CrDate}" editable="false" visible="{=${oModelDashDetail>/CrHide} !== 'X'}" />
+                                            <Label text="Code Review Time" visible="{=${oModelDashDetail>/CrHide} !== 'X'}"/>
+                                            <Input value="{oModelDashDetail>/CrTime}" editable="false" visible="{=${oModelDashDetail>/CrHide} !== 'X'}"/>
+                                            <core:Title text="Requester Details"/>
+                                            <Label text="Functional Consultant"/>
+                                            <Input width="100%" value="{oModelDashDetail>/FuncConst}" editable="false"/>
+                                            <Label text="Technical Consultant"/>
+                                            <Input width="100%" value="{oModelDashDetail>/TechPs}" editable="false"/>
+                                        </f:content>
+                                    </f:SimpleForm>
+                                </VBox>
+                            </IconTabFilter>
+                            <IconTabFilter icon="sap-icon://hr-approval" iconColor="Critical" id="idTeams" text="Teams" key="Teams">
+                                <VBox class="sapUiSmallMargin">
+                                    <f:SimpleForm id="SimpleFormDisplay3545" editable="true" layout="ResponsiveGridLayout" title="Teams" labelSpanXL="3" labelSpanL="3" labelSpanM="3" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="4" emptySpanL="4" emptySpanM="4" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1" singleContainerFullSize="false">
+                                        <f:content>
+                                            <Label design="Bold" text="Technical Team"/>
+                                            <Input width="50%" value="{oModelDashDetail>/TechPs}" editable="false"/>
+                                            <Label design="Bold" text="UT By"/>
+                                            <Input width="50%" value="{oModelDashDetail>/UtTester}" editable="false"/>
+                                            <Label design="Bold" text="Functional Consultant"/>
+                                            <Input width="50%" value="{oModelDashDetail>/FuncConst}" editable="false"/>
+                                            <Label design="Bold" text="UAT By"/>
+                                            <Input value="{oModelDashDetail>/UatTester}" width="50%" editable="false"/>
+                                            <Label design="Bold" text="Email ID"/>
+                                            <Input value="{oModelDashDetail>/UatMail}" width="50%" editable="false"/>
+                                        </f:content>
+                                    </f:SimpleForm>
+                                </VBox>
+                            </IconTabFilter>
+                            <IconTabFilter icon="sap-icon://attachment" iconColor="Negative" text="Attachments" key="attachments">
+                                <Table id="files" growing="true" sticky="ColumnHeaders" inset="true" items="{dashboard>/UploadedAttachment}">
+                                    <headerToolbar>
+                                        <OverflowToolbar class="MTB">
+                                            <Title text="Attachments"/>
+                                            <ToolbarSpacer/>
+                                            <!--  <Button icon="sap-icon://add" press="add_attachment" type="Emphasized" visible="{=${datamodel2>/Flag} ==='Y' || ${datamodel2>/Flag} ==='X'}" />  -->
+                                        </OverflowToolbar>
+                                    </headerToolbar>
+                                    <columns>
+                                        <Column class="dashboard">
+                                            <Label text="File Name"/>
+                                        </Column>
+                                        <Column>
+                                            <Label text="File Type"/>
+                                        </Column>
+                                        <Column>
+                                            <Label text="Uploaded Date"/>
+                                        </Column>
+                                        <Column class="Content" width="60px">
+                                            <Label text=""/>
+                                        </Column>
+                                        <Column class="Content" width="60px">
+                                            <Label text=""/>
+                                        </Column>
+                                    </columns>
+                                    <items>
+                                        <ColumnListItem class="dashbord">
+                                            <Text text="{dashboard>Filename}"/>
+                                            <Text text="{dashboard>Type}"/>
+                                            <HBox>
+                                                <core:Icon src="sap-icon://appointment-2" color="#3181c7" class="datestamp"/>
+                                                <Text text="{path:'dashboard>Datestamp'}"/>
+                                            </HBox>
+                                            <Button icon="sap-icon://download" visible="true" press="onFiledataDownload" type="Transparent"/>
+                                            <!--  <Button icon="sap-icon://delete" id="idDelFile" visible="{dashboard>isCreated}" press="onFileDelete" enabled="{
+												parts: [
+													'dashboard>__metadata'
+												],
+												formatter: '.fnEnableDel'
+											}" type="Transparent" />  -->
+                                        </ColumnListItem>
+                                    </items>
+                                </Table>
+                            </IconTabFilter>
+                            <IconTabFilter icon="sap-icon://history" iconColor="Critical" text="History Log" key="Approve">
+                                <Table id="log" items="{historylog>/}" growing="true" sticky="ColumnHeaders" alternateRowColors="true" inset="true">
+                                    <headerToolbar>
+                                        <OverflowToolbar>
+                                            <Label design="Bold" text="Items ({= ${historylog>/}.length})"/>
+                                            <ToolbarSpacer/>
+                                        </OverflowToolbar>
+                                    </headerToolbar>
+                                    <columns>
+                                        <Column hAlign="Center" width="5%" mergeDuplicates="true">
+                                            <Label text="RICEF ID"/>
+                                        </Column>
+                                        <Column hAlign="Center" width="7%" mergeDuplicates="true" visible="false">
+                                            <Label text="Status" wrapping="true"/>
+                                        </Column>
+                                        <Column hAlign="Center" width="11%">
+                                            <Label text="Action By" wrapping="true"/>
+                                        </Column>
+                                        <Column hAlign="Center" width="10%" mergeDuplicates="true">
+                                            <Label text="Date"/>
+                                        </Column>
+                                        <Column hAlign="Center" width="10%" mergeDuplicates="true">
+                                            <Label text="Time"/>
+                                        </Column>
+                                        <Column hAlign="Center" width="10%">
+                                            <Label text="Aging"/>
+                                        </Column>
+                                        <Column hAlign="Center" width="10%">
+                                            <Label text="Field Name"/>
+                                        </Column>
+                                        <Column hAlign="Center" width="10%">
+                                            <Label text="Old Value"/>
+                                        </Column>
+                                        <Column hAlign="Center" width="10%">
+                                            <Label text="New Value"/>
+                                        </Column>
+                                        <Column hAlign="Center" width="10%">
+                                            <Label text="Remarks" wrapping="true"/>
+                                        </Column>
+                                    </columns>
+                                    <items>
+                                        <ColumnListItem>
+                                            <tnt:InfoLabel id="il6" text="{historylog>RICEF_ID}" colorScheme="6"/>
+                                            <Text text="{historylog>TicketStatus}"/>
+                                            <tnt:InfoLabel id="il8" text="{historylog>ActionBy}" displayOnly="false" colorScheme="{ parts: [ {path: 'historylog>ActionBy'} ], formatter: '.actionBy' }"/>
+                                            <Text text="{historylog>DateTc}"/>
+                                            <!--  <FlexBox>
+                                                <tnt:InfoLabel id="il7" icon="sap-icon://away" colorScheme="6" />
+                                                <Text text="" />
+                                                <Text text="{historylog>TimeTc}" />
+                                            </FlexBox>  -->
+                                            <Text text="{historylog>TimeTc}"/>
+                                            <Label text="{historylog>Aging}" design="Bold"/>
+                                            <Text text="{historylog>ColumnName}" wrapping="true"/>
+                                            <Text text="{historylog>OldValue}" wrapping="true"/>
+                                            <Text text="{historylog>NewValue}" wrapping="true"/>
+                                            <Text text="{historylog>Remarks}" wrapping="true"/>
+                                        </ColumnListItem>
+                                    </items>
+                                </Table>
+                            </IconTabFilter>
+                            <IconTabFilter icon="sap-icon://activity-assigned-to-goal" iconColor="Critical" text="Defect Log" key="Approve" id="DefectTab">
+                                <Table id="defectlog" items="{path:'DefectLog>/'}" growing="true" sticky="ColumnHeaders" alternateRowColors="true">
+
+                                    <headerToolbar>
+                                        <OverflowToolbar>
+                                            <Label design="Bold" text="Items ({= ${DefectLog>/}.length})" />
+                                            <ToolbarSpacer />
+                                        </OverflowToolbar>
+                                    </headerToolbar>
+                                    <columns>
+                                        <Column hAlign="Center" width="5%">
+                                            <Label text="Defect Count" />
+                                        </Column>
+                                        <Column hAlign="Center" width="7%">
+                                            <Label text="RICEF ID" wrapping="true" />
+                                        </Column>
+                                        <Column hAlign="Center" width="11%">
+                                            <Label text="Defect" wrapping="true" />
+                                        </Column>
+                                        <Column hAlign="Center" width="11%">
+                                            <Label text="Description" wrapping="true" />
+                                        </Column>
+                                        <Column hAlign="Center" width="11%">
+                                            <Label text="Development Status" wrapping="true" />
+                                        </Column>
+                                        <Column hAlign="Center" width="10%">
+                                            <Label text=" Development Start Date" />
+                                        </Column>
+                                        <Column hAlign="Center" width="10%">
+                                            <Label text="Dev Expt. End Date" />
+                                        </Column>
+                                        <Column >
+                                        <Text text="Remarks"></Text>
+                                        </Column>
+
+                                    </columns>
+                                    <items>
+                                        <ColumnListItem>
+                                            <Text text="{DefectLog>DEFECT_NO}"></Text>
+                                            <Text text="{DefectLog>RICEF_ID}"></Text>
+                                            <Text text="{DefectLog>DEFECT}"></Text>
+                                            <Text text="{DefectLog>DESCRIPTION}"></Text>
+                                            <Text text="{DefectLog>STATUS}"></Text>
+                                            <Text text="{DefectLog>START_DATE}"></Text>
+                                            <Text text="{DefectLog>END_DATE}"></Text>
+                                            <Text text="{DefectLog>REMARKS}"/>
+
+                                        </ColumnListItem>
+                                    </items>
+                                </Table>
+                            </IconTabFilter>
+                        </items>
+                    </IconTabBar>
+                </content>
+            </Page>
+        </pages>
+    </App>
+</mvc:View>
