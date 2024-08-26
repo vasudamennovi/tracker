@@ -39,8 +39,8 @@ sap.ui.define([
 							"tiles": [{
 								"tileType": "sap.ushell.ui.tile.StaticTile",
 								"properties": {
-									"title": "Development Tracker",
-									"targetURL": "#ztprzticketprocessing-display"
+									"title": "Equipment Summery",
+									"targetURL": "#equipment-display"
 								}
 							}]
 						}]
@@ -51,18 +51,18 @@ sap.ui.define([
 				"adapter": {
 					"config": {
 						"inbounds": {
-							"ztprzticketprocessing-display": {
-								"semanticObject": "ztprzticketprocessing",
+							"equipment-display": {
+								"semanticObject": "equipment",
 								"action": "display",
-								"description": "Development Tracker",
-								"title": "Development Tracker",
+
+								"title": "Equipment Summery",
 								"signature": {
 									"parameters": {}
 								},
 								"resolutionResult": {
 									"applicationType": "SAPUI5",
-									"additionalInformation": "SAPUI5.Component=ztpr.zticketprocessing",
-									"url": sap.ui.require.toUrl("ztpr/zticketprocessing")
+									"additionalInformation": "SAPUI5.Component=equipment",
+									"url": sap.ui.require.toUrl("equipment")
 								}
 							}
 						}

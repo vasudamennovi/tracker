@@ -1,279 +1,159 @@
-<mvc:View controllerName="ztpr.zticketprocessing.controller.View1"
+<mvc:View controllerName="equipment.controller.View1"
     xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
     xmlns="sap.m"
-    xmlns:core="sap.ui.core"
-    xmlns:tnt="sap.tnt"
     xmlns:f="sap.f"
-    xmlns:fb="sap.ui.comp.filterbar"
-    xmlns:u="sap.ui.unified">
-
-    <f:DynamicPage id="dynamicPageId" headerExpanded="true">
-        <f:title>
-            <f:DynamicPageTitle>
-                <f:heading>
-                    <Title text="Development Tracker - Manage"/>
-                </f:heading>
-            </f:DynamicPageTitle>
-        </f:title>
+    xmlns:form="sap.ui.layout.form"
+    xmlns:layout="sap.ui.layout"
+    xmlns:core="sap.ui.core"
+    xmlns:fb="sap.ui.comp.filterbar">
+    <f:DynamicPage showFooter="true">
         <f:header>
-            <f:DynamicPageHeader >
+            <f:DynamicPageHeader>
                 <f:content>
-                    <fb:FilterBar id="filterBar" useToolbar="false" search="onPressGo" showClearOnFB="true" clear="onPressClear">
+                    <fb:FilterBar useToolbar="false" search="onFilterBarSearch" showClearOnFB="true" clear="onFilterBarClear">
                         <fb:filterGroupItems>
-                            <fb:FilterGroupItem visibleInFilterBar="true" groupName="G1" groupTitle="Group1" name="A1" label="RICEF ID">
+                            <fb:FilterGroupItem mandatory="true" name="QR Code Encoding" label="QR Code Encoding" groupName="QR Code Encoding" visibleInFilterBar="true">
                                 <fb:control>
-                                    <MultiComboBox
-                        id = "TickNum" selectionFinish="onSelectTicNum"
-                        width = "260px" items="{
-                            path: 'datamodel1>/'
-                            }">
-                                        <core:Item key="{datamodel1>RICEF_ID}" text="{datamodel1>RICEF_ID}" />
-                                    </MultiComboBox>
+                                    <HBox>
+                                        <ComboBox items="{path:'sampleData>/'}" width="22rem">
+                                            <core:ListItem text="{sampleData>/myData/0/eqno}" />
+                                        </ComboBox>
+                                        <Button icon="sap-icon://bar-code" press="onButtonPress">
+                                            <layoutData>
+                                                <layout:GridData span="XL1 L1 M1 S1" />
+                                            </layoutData>
+                                        </Button>
+                                    </HBox>
                                 </fb:control>
                             </fb:FilterGroupItem>
-                            <fb:FilterGroupItem visibleInFilterBar="true" groupName="G1" groupTitle="Group1" name="A2" label="Description">
+                            <fb:FilterGroupItem mandatory="true" name="equipment" label="Equipment Type" groupName="Notification" visibleInFilterBar="true">
                                 <fb:control>
-                                    <MultiComboBox
-                        id = "Descrip" selectionFinish="onSelectDescrip"
-                        width = "260px" items="{
-                            path: 'desModel>/'
-                            }">
-                                        <core:Item key="{desModel>}" text="{desModel>}" />
-                                    </MultiComboBox>
+                                    <ComboBox showSecondaryValues="true" change="" items="{path:'sampleData>/'}">
+                                        <core:ListItem text="{sampleData>/myData/0/eqtype}" />
+                                    </ComboBox>
                                 </fb:control>
                             </fb:FilterGroupItem>
-                            <fb:FilterGroupItem visibleInFilterBar="true" groupName="G1" groupTitle="Group1" name="A9" label="Region">
-                                <fb:control>
-                                    <MultiComboBox
-                        id = "regionId" selectionFinish="onSelectBU"
-                        width = "260px" items="{
-                            path: 'regionModel>/'
-                            }">
-                                        <core:Item key="{regionModel>InputTc}" text="{regionModel>InputTc}" />
-                                    </MultiComboBox>
-                                </fb:control>
-                            </fb:FilterGroupItem>
-
-                            <fb:FilterGroupItem visibleInFilterBar="true" groupName="G1" groupTitle="Group1" name="A3" label="Functional Consultant">
-                                <fb:control>
-                                    <MultiComboBox
-                        id = "FuncCons" selectionFinish="onSelectFuncCons"
-                        width = "260px" items="{
-                            path: 'funcConstModel>/'
-                            }">
-                                        <core:Item key="{funcConstModel>Name}" text="{funcConstModel>Name}" />
-                                    </MultiComboBox>
-                                </fb:control>
-                            </fb:FilterGroupItem>
-                            <fb:FilterGroupItem visibleInFilterBar="true" groupName="G1" groupTitle="Group1" name="A4" label="Technical Consultant">
-                                <fb:control>
-                                    <MultiComboBox
-                        id = "TechCons" selectionFinish="onSelecttechCons"
-                        width = "260px" items="{
-                            path: 'techConstModel>/'
-                            }">
-                                        <core:Item key="{techConstModel>Name}" text="{techConstModel>Name}" />
-                                    </MultiComboBox>
-                                </fb:control>
-                            </fb:FilterGroupItem>
-                            <fb:FilterGroupItem visibleInFilterBar="true" groupName="G1" groupTitle="Group1" name="A5" label="Priority">
-                                <fb:control>
-                                    <MultiComboBox
-                        id = "Prio" selectionFinish="onSelectPrio"
-                        width = "260px" items="{
-                            path: 'prioModel>/'
-                            }">
-                                        <core:Item key="{prioModel>InputTc}" text="{prioModel>InputTc}" />
-                                    </MultiComboBox>
-                                </fb:control>
-                            </fb:FilterGroupItem>
-                            <fb:FilterGroupItem visibleInFilterBar="true" groupName="G1" groupTitle="Group1" name="A6" label="Complexity">
-                                <fb:control>
-                                    <MultiComboBox
-                        id = "Complex" selectionFinish="onSelectComplex"
-                        width = "260px" items="{
-                            path: 'compModel>/'
-                            }">
-                                        <core:Item key="{compModel>InputTc}" text="{compModel>InputTc}" />
-                                    </MultiComboBox>
-                                </fb:control>
-                            </fb:FilterGroupItem>
-                            <fb:FilterGroupItem visibleInFilterBar="true" groupName="G1" groupTitle="Group1" name="A8" label="Ticket Status" visible="false">
-                                <fb:control>
-                                    <MultiComboBox
-                        id = "TicSts" selectionFinish="onSelectTicSts"
-                        width = "260px" items="{
-                            path: 'tickStsModel>/'
-                            }">
-                                        <core:Item key="{tickStsModel>}" text="{tickStsModel>}" />
-                                    </MultiComboBox>
-                                </fb:control>
-                            </fb:FilterGroupItem>
-                            <fb:FilterGroupItem visibleInFilterBar="true" groupName="G1" groupTitle="Group1" name="A7" label="Development Status">
-                                <fb:control>
-                                    <MultiComboBox
-                        id = "DevSts" selectionFinish="onSelectDevSts"
-                        width = "260px" items="{
-                            path: 'devStsModel>/'
-                            }">
-                                        <core:Item key="{devStsModel>InputTc}" text="{devStsModel>InputTc}" />
-                                    </MultiComboBox>
-                                </fb:control>
-                            </fb:FilterGroupItem>
-
                         </fb:filterGroupItems>
                     </fb:FilterBar>
                 </f:content>
             </f:DynamicPageHeader>
         </f:header>
-
         <f:content>
-            <Table id="dashboard" items="{datamodel1>/}" growing="true" sticky="ColumnHeaders" alternateRowColors="true">
-                <headerToolbar>
-                    <OverflowToolbar >
-                        <Label design="Bold" text="Items ({oItemLenModel>/})"></Label>
-                        <ToolbarSpacer/>
-                        <SearchField id="search" liveChange="onSearch" width="30%" />
-                        <Button press="onExcelExport" icon="sap-icon://excel-attachment" />
+            <VBox>
+                <HBox>
+                    <VBox width="50%" class="formContainer">
+                        <form:SimpleForm title="Device Information" editable="true" layout="ResponsiveGridLayout" labelSpanXL="5" emptySpanL="5" emptySpanXL="4" labelSpanM="4" labelSpanS="4" adjustLabelSpan="false" columnsXL="2" columnsL="2" singleContainerFullSize="false">
+                            <Label text="Equipment Number" />
+                            <Input value="{sampleData>/myData/0/eqno}" />
+                            <Label text="Equipment Type" />
+                            <Input value="{sampleData>/myData/0/eqtype}" />
+                            <Label text="Device Name" />
+                            <Input value="{sampleData>/myData/0/devname}" />
+                            <Label text="Specification and Models" />
+                            <Input value="{sampleData>/myData/0/specmod}" />
+                            <Label text="Use Department Value" />
+                            <Input value="{sampleData>/myData/0/deptvalue}" />
+                            <Label text="No.Of Inspection Per Day" />
+                            <Input value="{sampleData>/myData/0/inspday}" />
+                            <Label text="Maintenance Frequency Value" />
+                            <Input value="{sampleData>/myData/0/freqval}" />
+                            <Label text="Device Picture Preview Address" />
+                            <Input value="{sampleData>/myData/0/pic}"></Input>
+                        </form:SimpleForm>
+                    </VBox>
+                    <VBox width="50%" class="tableContainer">
+                        <!-- <Table width="100%" headerText="Equipment Inspection Details">
+                            <columns>
+                                <Column>
+                                    <Text text="Inspection Info" />
+                                </Column>
+                                <Column >
+                                <Text text="Repair Info"></Text>
+                                </Column>
+                                <Column >
+                                <Text text="Maintainance Info"></Text>
+                                </Column>
+                            </columns>
+                            <items>
+                              
+                            </items>
+                        </Table> -->
+                        <IconTabBar >
+                            <items>
+                                <IconTabFilter text="Inspection Info">
+                                    <TextArea width="100%" height="275px"></TextArea>
+                                </IconTabFilter>
+                                <IconTabFilter text="Repair Info">
+                                    <TextArea width="100%" height="275px"></TextArea>
 
-                    </OverflowToolbar>
-                </headerToolbar>
-                <columns>
-
-                    <Column width="10%">
-                        <Label text="RICEF ID" />
-                    </Column>
-                    <Column hAlign="Center">
-                        <Label text="Description" />
-                    </Column>
-                    <Column hAlign="Center">
-                        <Label text="Region" />
-                    </Column>
-                    <Column hAlign="Center">
-                        <Label text="Functional Consultant" />
-                    </Column>
-                    <Column hAlign="Center">
-                        <Label text="Technical Consultant"/>
-                    </Column>
-                    <Column hAlign="Center">
-                        <Label text="FS Target Com.Date"/>
-                    </Column>
-                    <Column hAlign="Center" visible="false">
-                        <Label text="Dev Target Com.Date"/>
-                    </Column>
-
-                    <Column hAlign="Center">
-                        <Label text="Priority"/>
-                    </Column>
-                    <Column hAlign="Center">
-                        <Label text="Complexity" />
-                    </Column>
-                    <Column hAlign="Center">
-                        <Label text="Aging"/>
-                    </Column>
-                    <Column hAlign="Center" visible="false">
-                        <Label text="Ticket Status" />
-                    </Column>
-                    <Column hAlign="Center">
-                        <Label text="Defects" />
-                    </Column>
-
-                    <Column hAlign="Center">
-                        <Label text="DevStatus"/>
-                    </Column>
-
-                    <Column hAlign="Center">
-                        <Label text="Ref.Copy" />
-                    </Column>
-
-
-                </columns>
-                <items>
-                    <ColumnListItem type="Navigation" press="onRowSelect">
-
-                        <Link text="{datamodel1>RICEF_ID}" press="NavtoView2"   />
-
-                        <Text text="{datamodel1>Description}"/>
-                        <Text text="{datamodel1>BusnUnit}"/>
-
-                        <HBox class="tableDate">
-                            <core:Icon src="sap-icon://employee" color="blue" class="funcSpace"/>
-                            <Text text="{datamodel1>FuncConst}"/>
-                        </HBox>
-
-                        <HBox class="tableDate">
-                            <core:Icon src="sap-icon://employee" color="blue" class="techSpace"/>
-                            <Text text="{datamodel1>TechPs}"/>
-                        </HBox>
-
-                        <!-- <Text text="{datamodel1>FuncConst}"/> -->
-                        <HBox class="tableDate">
-                            <core:Icon src="sap-icon://appointment-2" color="green" class="dateSpace" />
-                            <Text text="{datamodel1>FsReceDate}"/>
-                        </HBox>
-
-                        <!--  <Text text="{datamodel1>TechPs}"/> -->
-                        <!--  <Text text="{datamodel1>FsTargetCom}"/> -->
-
-
-                        <HBox class="tableDate">
-                            <core:Icon src="sap-icon://appointment-2" color="green"/>
-                            <Text text="{datamodel1>DevTargetDate}"/>
-                        </HBox>
-
-                        <tnt:InfoLabel text="{datamodel1>Priority}" displayOnly="false" colorScheme="{ parts: [ {path: 'datamodel1>Priority'} ], formatter: '.Priority' }" />
-
-                        <tnt:InfoLabel text="{datamodel1>Complexity}" displayOnly="false" colorScheme="{ parts: [ {path: 'datamodel1>Complexity'} ], formatter: '.Complexity' }"/>
-
-                        <!--  <Text text="{datamodel1>Aging}"/> -->
-                        <Link text="{datamodel1>Aging}" press="onQuikView" ariaHasPopup="Dialog"/>
-                        <!--  <tnt:InfoLabel text="{datamodel1>Aging}" displayOnly="false" colorScheme="{ parts: [ {path: 'datamodel1>Aging'} ], formatter: '.statusColor' }"/> -->
-
-                        <tnt:InfoLabel text="{datamodel1>TicketStatus}" displayOnly="false" colorScheme="{ parts: [ {path: 'datamodel1>TicketStatus'} ], formatter: '.statusColor' }"/>
-                        <Text text="{datamodel1>DefectCount}"></Text>
-
-                        <Text text="{datamodel1>DevStatus}"/>
-
-
-
-                        <Button icon="sap-icon://copy" type="Emphasized" press="Ref_Ok" />
-
-
-                    </ColumnListItem>
-                </items>
-
-            </Table>
-
+                                </IconTabFilter>
+                                <IconTabFilter text="Maintainace Info">
+                                    <TextArea width="100%" height="275px"></TextArea>
+                                </IconTabFilter>
+                            </items>
+                        </IconTabBar>
+                    </VBox>
+                </HBox>
+                <Table headerText="Equipment Inspection Details" class="table2" items="{path:'sampleData>/myData'}">
+                    <columns>
+                        <Column >
+                            <Text text="Equipment Number"></Text>
+                        </Column>
+                        <Column >
+                            <Text text="Equipment Type"></Text>
+                        </Column>
+                        <Column >
+                            <Text text="Device Name"></Text>
+                        </Column>
+                        <Column >
+                            <Text text="Equipment Department"></Text>
+                        </Column>
+                        <Column >
+                            <Text text="Inspection Personnel Name"></Text>
+                        </Column>
+                        <Column >
+                            <Text text="Inspection Shift"></Text>
+                        </Column>
+                        <Column >
+                            <Text text="Inspection Time"></Text>
+                        </Column>
+                        <Column >
+                            <Text text="Running Status Value"></Text>
+                        </Column>
+                        <Column >
+                            <Text text="Inspection Result Value"></Text>
+                        </Column>
+                        <Column >
+                            <Text text="Inspection Notes"></Text>
+                        </Column>
+                    </columns>
+                    <items>
+                        <ColumnListItem >
+                            <cells>
+                                <Text text="{sampleData>eqno}"></Text>
+                                <Text text="{sampleData>eqtype}"></Text>
+                                <Text text="{sampleData>devname}"></Text>
+                                <Text text="{sampleData>eqdept}"></Text>
+                                <Text text="{sampleData>inspname}"></Text>
+                                <Text text="{sampleData>inspshift}"></Text>
+                                <Text text="{sampleData>insptime}"></Text>
+                                <Text text="{sampleData>runstatus}"></Text>
+                                <Text text="{sampleData>inspresult}"></Text>
+                                <Text text="{sampleData>inspnotes}"></Text>
+                            </cells>
+                        </ColumnListItem>
+                    </items>
+                </Table>
+            </VBox>
 
         </f:content>
+     <f:footer>
+            <Toolbar>
+                <ToolbarSpacer />
+                <Button text="Submit" press="onSubmitPress" />
+                <Button text="Cancel" press="onCancelPress"></Button>
+            </Toolbar>
+        </f:footer>
+
     </f:DynamicPage>
-
-
 </mvc:View>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

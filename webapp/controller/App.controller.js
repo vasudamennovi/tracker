@@ -5,8 +5,8 @@ sap.ui.define(
     function(BaseController) {
       "use strict";
   
-      return BaseController.extend("ztpr.zticketprocessing.controller.App", {
-        onInit() {
+      return BaseController.extend("equipment.controller.App", {
+        onInit: function() {
         }
       });
     }

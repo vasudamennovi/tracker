@@ -1,16 +1,9 @@
-.myCustomIconSpacing {
+.formContainer {
     margin-right: 10px; 
+    margin-bottom: 20px;
 }
-.dateSpace{
-    margin-right: 10px; 
-}
-.techSpace{
-    margin-right: 10px; 
-    
-}
-.funcSpace{
-    margin-right: 10px; 
-}
-.space{
+
+.tableContainer {
     margin-left: 20px; 
 }
+

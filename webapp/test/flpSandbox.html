@@ -37,16 +37,17 @@
                 fiori2: {
                     componentData: {
                         config: {
-                            search: "hidden"
+                            search: "hidden",
+                            enableSearch: false
                         }
                     }
                 }
             },
             applications: {
-                "ztprzticketprocessing-display": {
-                    title: "Development Tracker",
-                    description: "Development Tracker",
-                    additionalInformation: "SAPUI5.Component=ztpr.zticketprocessing",
+                "equipment-display": {
+                    title: "Equipment Summery",
+                    description: "",
+                    additionalInformation: "SAPUI5.Component=equipment",
                     applicationType: "URL",
                     url: "../"
                 }
@@ -64,8 +65,9 @@
         data-sap-ui-theme="sap_horizon"
         data-sap-ui-compatVersion="edge"
         data-sap-ui-language="en"
-        data-sap-ui-resourceroots='{"ztpr.zticketprocessing": "../"}'
-        data-sap-ui-frameOptions="allow">
+        data-sap-ui-resourceroots='{"equipment": "../"}'
+        data-sap-ui-frameOptions="allow"
+        data-sap-ui-flexibilityServices='[{"connector": "LocalStorageConnector"}]'>
     </script>
     <script id="locate-reuse-libs" src="./locate-reuse-libs.js" data-sap-ui-manifest-uri="../manifest.json">
     </script>

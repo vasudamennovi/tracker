@@ -1,0 +1,19 @@
+{
+    "myData":[{
+        "eqno":"10",
+        "eqtype":"MN",
+        "devname":"lap",
+        "eqdept":"PM",
+        "inspname":"aslam",
+        "inspshift":"Noon",
+        "insptime":"12:00",
+        "runstatus":"123",
+        "inspresult":"yes",
+        "inspnotes":"on going",
+        "specmod":"PM",
+        "deptvalue":"101",
+        "inspday":"03",
+        "freqval":"20",
+        "pic":"good"
+    }]
+}

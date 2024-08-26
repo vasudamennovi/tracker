@@ -1,6 +1,6 @@
 /* global QUnit */
 
-sap.ui.require(["ztpr/zticketprocessing/test/integration/AllJourneys"
+sap.ui.require(["equipment/test/integration/AllJourneys"
 ], function () {
 	QUnit.config.autostart = false;
 	QUnit.start();

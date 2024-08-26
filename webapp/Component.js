@@ -5,12 +5,12 @@
 sap.ui.define([
         "sap/ui/core/UIComponent",
         "sap/ui/Device",
-        "ztpr/zticketprocessing/model/models"
+        "equipment/model/models"
     ],
     function (UIComponent, Device, models) {
         "use strict";
 
-        return UIComponent.extend("ztpr.zticketprocessing.Component", {
+        return UIComponent.extend("equipment.Component", {
             metadata: {
                 manifest: "json"
             },
@@ -29,14 +29,7 @@ sap.ui.define([
 
                 // set the device model
                 this.setModel(models.createDeviceModel(), "device");
-                this.globalModel = {
-                    ticketage:"0D 0H 0M",
-                    
-                    BUData:[]
-                };
-                this.setModel(this.globalModel, "globalModel");
-                
-}
+            }
         });
     }
 );
